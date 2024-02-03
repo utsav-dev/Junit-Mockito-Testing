@@ -1,0 +1,16 @@
+There are following types of Assertions available.
+
+1. assertEquals
+=> It is equivalent to the .equals() and just COMPARES the CONTENT of the objects NOT REFERENCE[LOCATION].
+
+2. assertSame
+=> It is equicvalent to the == operator which will compare the reference of the objects.
+
+3. assertTrue
+=> Expected result is to be TRUE.
+
+4. assertFalse
+=> Expected result is to be FALSE.
+
+5. assertArrayEquals
+=> Test the content of Array
