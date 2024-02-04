@@ -14,9 +14,9 @@ public class ChessPlayerTest {
     public void testAssignCategorySpy() throws Exception{
 
         ChessPlayer chessPlayer = new ChessPlayer("Magnus", 30);
-        ChessPlayer chessPlayerSpy = Mockito.spy(chessPlayer);
+        ChessPlayer chessPlayerSpy = Mockito.spy(chessPlayer); /* #Utsav using SPY to test VOID mehtods */
 
-        doNothing().when(chessPlayerSpy).assignCategory();
+        doNothing().when(chessPlayerSpy).assignCategory(); /* #Utsav instructs the method to do nothing on this method call */
         chessPlayerSpy.assignCategory();
 
         assertEquals("Senior", chessPlayerSpy.getCategory());
@@ -29,7 +29,7 @@ public class ChessPlayerTest {
         ChessPlayer chessPlayerMock = Mockito.mock(ChessPlayer.class);
 
         when(chessPlayerMock.getAge()).thenReturn(30);
-        doCallRealMethod().when(chessPlayerMock).assignCategory();
+        doCallRealMethod().when(chessPlayerMock).assignCategory(); /* #Utsav used to call real methods on the mock objet */
         doCallRealMethod().when(chessPlayerMock).getCategory();
         chessPlayerMock.assignCategory();
 
@@ -40,7 +40,7 @@ public class ChessPlayerTest {
     public void testAssignCategoryMockException() throws Exception{
 
         ChessPlayer chessPlayerMock = Mockito.mock(ChessPlayer.class);
-        doThrow(Exception.class).when(chessPlayerMock).assignCategory();
+        doThrow(Exception.class).when(chessPlayerMock).assignCategory(); /* #Utsav used to throw an Exception forcefully */
         chessPlayerMock.assignCategory();
 
     }
