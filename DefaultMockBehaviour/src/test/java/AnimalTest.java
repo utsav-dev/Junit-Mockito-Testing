@@ -16,7 +16,7 @@ public class AnimalTest {
     @Test
     public void testAnimal(){
 
-        System.out.println("---Returns Defaults---");
+        System.out.println("---Returns Defaults---");     /* #Utsav The DEFAULT Behaviour of MOCK will return "null" for the objects & default values for the primittive types */ 
         Animal lion = mock(Animal.class);
         System.out.println(lion.getZooKeeper());
         System.out.println(lion.age);
@@ -27,7 +27,7 @@ public class AnimalTest {
 
         ZooKeeper zooKeeperJohn = new ZooKeeper("John");
         System.out.println("---Returns Smart Nulls---");
-        Animal lion3 = mock(Animal.class, RETURNS_SMART_NULLS);
+        Animal lion3 = mock(Animal.class, RETURNS_SMART_NULLS); /* #Utsav This will return SMART_NULL(provides a guidance/warning to stub a method which the user might have forget) and not "null" directly for the unstubbed method calls */
         when(lion3.getZooKeeper()).thenReturn(zooKeeperJohn);
         System.out.println(lion3.getZooKeeper());
 
@@ -35,11 +35,11 @@ public class AnimalTest {
         Animal lion4 = mock(Animal.class, RETURNS_MOCKS);
         System.out.println(lion4.age);
         System.out.println(lion4.getZooKeeper());
-        when(lion4.getZooKeeper()).thenReturn(mock(ZooKeeper.class));
-        System.out.println("Name: " + lion4.getZooKeeper().getName());
+        when(lion4.getZooKeeper()).thenReturn(mock(ZooKeeper.class)); /* #Utsav This is the internal working of the RETURNS_MOCKS and it wont give NPE when we call method(getName) of the unstubbbed class(Zookeeper) */
+        System.out.println("Name: " + lion4.getZooKeeper().getName()); /* It will print blank o/p */
 
         System.out.println("---Returns Deep Stubs---");
-        Animal lion5 = mock(Animal.class, RETURNS_DEEP_STUBS);
+        Animal lion5 = mock(Animal.class, RETURNS_DEEP_STUBS); /* It allows user to stub the chained method calls, so it helps specifc stubbing*/
         when(lion5.getZooKeeper().getName()).thenReturn("Alan");
         System.out.println(lion5.getZooKeeper().getName());
     }
